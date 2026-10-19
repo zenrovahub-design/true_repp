@@ -171,7 +171,7 @@ const pricingPlans = [
   {
     id: "starter",
     name: "Starter",
-    price: "29",
+    price: "25",
     desc: "Perfect for small businesses",
     features: [
       "Up to 10 locations",
@@ -183,7 +183,7 @@ const pricingPlans = [
   {
     id: "professional",
     name: "Professional",
-    price: "79",
+    price: "40",
     desc: "For growing businesses",
     features: [
       "Unlimited locations",
@@ -197,7 +197,7 @@ const pricingPlans = [
   {
     id: "enterprise",
     name: "Enterprise",
-    price: "Custom",
+    price: "90",
     desc: "For large organizations",
     features: [
       "All Professional features",

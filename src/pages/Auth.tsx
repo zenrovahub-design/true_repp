@@ -26,19 +26,19 @@ const signupPlans: Array<{
   {
     id: "starter",
     name: "Starter",
-    price: "$29/month",
+    price: "$25/month",
     description: "Perfect for small businesses getting started.",
   },
   {
     id: "professional",
     name: "Professional",
-    price: "$79/month",
+    price: "$40/month",
     description: "Best for growing teams with advanced needs.",
   },
   {
     id: "enterprise",
     name: "Enterprise",
-    price: "Custom",
+    price: "$90/month",
     description: "Custom package for larger organizations.",
   },
 ];
