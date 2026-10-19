@@ -13,6 +13,8 @@ import Admin from "./pages/Admin";
 import AdminLogin from "./pages/AdminLogin";
 import NotFound from "./pages/NotFound";
 import InfoPage from "./pages/InfoPage";
+import PaymentSuccess from "./pages/PaymentSuccess";
+import PaymentFailed from "./pages/PaymentFailed";
 
 const queryClient = new QueryClient();
 
@@ -51,7 +53,8 @@ const App = () => (
             <Route path="/contact" element={<InfoPage pageKey="contact" />} />
             <Route path="/privacy" element={<InfoPage pageKey="privacy" />} />
             <Route path="/terms" element={<InfoPage pageKey="terms" />} />
-            <Route path="/security" element={<InfoPage pageKey="security" />} />
+            <Route path="/payment/success" element={<PaymentSuccess />} />
+            <Route path="/payment/failed" element={<PaymentFailed />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </AuthProvider>

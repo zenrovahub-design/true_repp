@@ -2,14 +2,20 @@
  * Dodo Payments Configuration & Helpers
  */
 
+const DEFAULT_TEST_LINKS: Record<string, string> = {
+  starter: "https://test.checkout.dodopayments.com/buy/pdt_0Nq5zd9D6UMIN0T4kNMqV",
+  professional: "https://test.checkout.dodopayments.com/buy/pdt_0Nq5ztRuOpbMqmKgNFGgJ",
+  enterprise: "https://test.checkout.dodopayments.com/buy/pdt_0Nq60Aqurt1I5dhCXUOaV",
+};
+
 export const DODO_PAYMENT_LINKS: Record<string, string> = {
-  starter: import.meta.env.VITE_DODO_STARTER_URL || "",
-  professional: import.meta.env.VITE_DODO_PROFESSIONAL_URL || "",
-  enterprise: import.meta.env.VITE_DODO_ENTERPRISE_URL || "",
+  starter: import.meta.env.VITE_DODO_STARTER_URL || DEFAULT_TEST_LINKS.starter,
+  professional: import.meta.env.VITE_DODO_PROFESSIONAL_URL || DEFAULT_TEST_LINKS.professional,
+  enterprise: import.meta.env.VITE_DODO_ENTERPRISE_URL || DEFAULT_TEST_LINKS.enterprise,
 };
 
 /**
- * Returns dynamic Dodo checkout URL with current domain redirect & optional customer email
+ * Returns dynamic Dodo checkout URL with current domain redirect to /payment/success
  */
 export const getDodoCheckoutUrl = (
   planId: string = "starter",
@@ -17,7 +23,9 @@ export const getDodoCheckoutUrl = (
 ): string => {
   const normalizedPlan = (planId || "starter").toLowerCase();
   const baseCheckoutUrl =
-    DODO_PAYMENT_LINKS[normalizedPlan] || DODO_PAYMENT_LINKS.starter;
+    DODO_PAYMENT_LINKS[normalizedPlan] ||
+    DEFAULT_TEST_LINKS[normalizedPlan] ||
+    DEFAULT_TEST_LINKS.starter;
 
   try {
     const url = new URL(baseCheckoutUrl);
@@ -29,7 +37,7 @@ export const getDodoCheckoutUrl = (
         ? window.location.origin
         : "https://truerepp.vercel.app";
 
-    const returnUrl = `${origin}/dashboard?payment=success&plan=${normalizedPlan}`;
+    const returnUrl = `${origin}/payment/success?plan=${normalizedPlan}`;
     url.searchParams.set("redirect_url", returnUrl);
 
     if (customerEmail) {
@@ -39,6 +47,7 @@ export const getDodoCheckoutUrl = (
     return url.toString();
   } catch (err) {
     console.error("Error formatting Dodo checkout URL:", err);
-    return baseCheckoutUrl;
+    return baseCheckoutUrl || DEFAULT_TEST_LINKS.starter;
   }
 };
+
