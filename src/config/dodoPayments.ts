@@ -3,9 +3,9 @@
  */
 
 export const DODO_PAYMENT_LINKS: Record<string, string> = {
-  starter: "https://test.checkout.dodopayments.com/buy/pdt_0Nq5zd9D6UMIN0T4kNMqV",
-  professional: "https://test.checkout.dodopayments.com/buy/pdt_0Nq5ztRuOpbMqmKgNFGgJ",
-  enterprise: "https://test.checkout.dodopayments.com/buy/pdt_0Nq60Aqurt1I5dhCXUOaV",
+  starter: import.meta.env.VITE_DODO_STARTER_URL || "",
+  professional: import.meta.env.VITE_DODO_PROFESSIONAL_URL || "",
+  enterprise: import.meta.env.VITE_DODO_ENTERPRISE_URL || "",
 };
 
 /**
