@@ -14,6 +14,7 @@ import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 import { ArrowLeft, Eye, EyeOff, Zap } from "lucide-react";
 import dashboardBg from "@/assets/bg.png";
+import { getDodoCheckoutUrl } from "@/config/dodoPayments";
 
 type PlanId = "starter" | "professional" | "enterprise";
 
@@ -130,8 +131,11 @@ export default function Auth() {
         if (error) {
           toast.error(error.message);
         } else {
-          toast.success("Account created successfully");
-          setIsLogin(true);
+          toast.success("Account created! Redirecting to secure Dodo checkout...");
+          const checkoutUrl = getDodoCheckoutUrl(selectedPlan, email);
+          setTimeout(() => {
+            window.location.href = checkoutUrl;
+          }, 800);
         }
       }
     } finally {
@@ -254,15 +258,33 @@ export default function Auth() {
 
             <Button
               type="submit"
-              className="w-full rounded-xl bg-teal-600 text-white hover:bg-teal-700"
+              className="w-full rounded-xl bg-teal-600 text-white hover:bg-teal-700 font-bold"
               disabled={loading}
             >
               {loading
                 ? "Please wait..."
                 : isLogin
                   ? "Sign In"
-                  : "Sign Up"}
+                  : selectedPlan
+                    ? `Create Account & Proceed to Payment (${signupPlans.find((p) => p.id === selectedPlan)?.price || "$25/month"})`
+                    : "Select Plan & Sign Up"}
             </Button>
+
+            {!isLogin && selectedPlan && (
+              <div className="pt-1 text-center">
+                <a
+                  href={getDodoCheckoutUrl(selectedPlan, email)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs font-semibold text-teal-700 hover:text-teal-900 transition-colors"
+                >
+                  ⚡ Direct Test Checkout without password ➔
+                </a>
+                <p className="mt-1 text-[11px] text-slate-400">
+                  🔒 Secure checkout powered by Dodo Payments
+                </p>
+              </div>
+            )}
           </form>
           <div className="mt-4 text-center text-sm text-muted-foreground">
             {isLogin ? "Don't have an account?" : "Already have an account?"}{" "}

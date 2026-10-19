@@ -252,6 +252,18 @@ export default function Dashboard() {
     };
   }, []);
 
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("payment") === "success") {
+      const plan = params.get("plan") || "subscription";
+      toast.success(
+        `🎉 Payment successful! Your ${plan.toUpperCase()} Plan is now active.`,
+        { duration: 6000 }
+      );
+      window.history.replaceState({}, document.title, window.location.pathname);
+    }
+  }, []);
+
   const fetchData = async (showLoading = false) => {
     if (showLoading) {
       setLoading(true);

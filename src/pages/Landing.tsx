@@ -37,6 +37,7 @@ import {
   RefreshCw,
 } from "lucide-react";
 import dashboardBg from "@/assets/bg.png";
+import { getDodoCheckoutUrl } from "@/config/dodoPayments";
 
 const features = [
   {
@@ -1249,17 +1250,27 @@ export default function Landing() {
                       <span className="text-gray-600 text-sm">/month</span>
                     )}
                   </div>
-                  <Link
-                    to={`/auth?mode=signup&plan=${plan.id}`}
-                    className="block mb-8"
-                  >
-                    <Button
-                      className={`w-full ${plan.popular ? "bg-teal-600 hover:bg-teal-700" : "border border-gray-300"}`}
-                      variant={plan.popular ? "default" : "outline"}
+                  <div className="space-y-2 mb-8">
+                    <Link
+                      to={`/auth?mode=signup&plan=${plan.id}`}
+                      className="block"
                     >
-                      Get Started
-                    </Button>
-                  </Link>
+                      <Button
+                        className={`w-full ${plan.popular ? "bg-teal-600 hover:bg-teal-700" : "border border-gray-300"} font-bold`}
+                        variant={plan.popular ? "default" : "outline"}
+                      >
+                        Get Started
+                      </Button>
+                    </Link>
+                    <a
+                      href={getDodoCheckoutUrl(plan.id)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block text-center text-xs font-semibold text-teal-700 hover:text-teal-900 transition-colors py-1"
+                    >
+                      ⚡ Test Dodo Checkout ➔
+                    </a>
+                  </div>
                   <div className="space-y-4">
                     {plan.features.map((feature, j) => (
                       <div key={j} className="flex items-start gap-3">
