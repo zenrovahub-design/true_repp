@@ -53,6 +53,7 @@ const App = () => (
             <Route path="/contact" element={<InfoPage pageKey="contact" />} />
             <Route path="/privacy" element={<InfoPage pageKey="privacy" />} />
             <Route path="/terms" element={<InfoPage pageKey="terms" />} />
+            <Route path="/security" element={<InfoPage pageKey="security" />} />
             <Route path="/payment/success" element={<PaymentSuccess />} />
             <Route path="/payment/failed" element={<PaymentFailed />} />
             <Route path="*" element={<NotFound />} />
