@@ -1734,48 +1734,6 @@ export default function Landing() {
               <p>
                 © {new Date().getFullYear()} True Repp. All rights reserved.
               </p>
-              <div className="flex items-center gap-3 text-xs font-semibold text-slate-600 flex-wrap">
-                <span>Share TrueRepp:</span>
-                <a
-                  href="https://twitter.com/intent/tweet?text=Rapidly%20boost%20your%20Google%20Online%20Profile%20with%20TrueRepp&url=https://truerepp.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-teal-600 transition-colors"
-                  aria-label="Share TrueRepp on Twitter / X"
-                >
-                  Twitter / X
-                </a>
-                <span>•</span>
-                <a
-                  href="https://www.linkedin.com/sharing/share-offsite/?url=https://truerepp.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-teal-600 transition-colors"
-                  aria-label="Share TrueRepp on LinkedIn"
-                >
-                  LinkedIn
-                </a>
-                <span>•</span>
-                <a
-                  href="https://www.facebook.com/sharer/sharer.php?u=https://truerepp.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-teal-600 transition-colors"
-                  aria-label="Share TrueRepp on Facebook"
-                >
-                  Facebook
-                </a>
-                <span>•</span>
-                <a
-                  href="https://api.whatsapp.com/send?text=Check%20out%20TrueRepp%20to%20boost%20Google%20reviews:%20https://truerepp.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-teal-600 transition-colors"
-                  aria-label="Share TrueRepp on WhatsApp"
-                >
-                  WhatsApp
-                </a>
-              </div>
               <p>Built for modern businesses.</p>
             </div>
           </div>
