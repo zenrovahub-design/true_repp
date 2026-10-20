@@ -18,6 +18,7 @@ import {
 import { siFacebook, siYelp } from "simple-icons/icons";
 import { GoogleLogo } from "@/components/GoogleLogo";
 import reviewBg from "@/assets/review-bg.jpg";
+import SEO from "@/components/SEO";
 
 type PlatformVisual = {
   icon: JSX.Element;
@@ -294,8 +295,13 @@ export default function ReviewPage() {
   }
 
   return (
-    <div
-      className="relative flex min-h-screen flex-col items-center justify-between bg-cover bg-center bg-fixed bg-no-repeat px-4 py-10 sm:py-16 font-sans selection:bg-[#F1EAFA] selection:text-[#7C3AED]"
+    <>
+      <SEO
+        title={businessName ? `Review ${businessName} | TrueRepp` : "Leave a Review | TrueRepp"}
+        noindex
+      />
+      <div
+        className="relative flex min-h-screen flex-col items-center justify-between bg-cover bg-center bg-fixed bg-no-repeat px-4 py-10 sm:py-16 font-sans selection:bg-[#F1EAFA] selection:text-[#7C3AED]"
       style={{
         backgroundImage: `linear-gradient(rgba(17, 17, 19, 0.46), rgba(17, 17, 19, 0.58)), url(${reviewBg})`,
       }}
@@ -578,5 +584,6 @@ export default function ReviewPage() {
         </div>
       </div>
     </div>
+    </>
   );
 }

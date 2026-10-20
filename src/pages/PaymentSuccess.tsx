@@ -11,6 +11,7 @@ import {
   Check,
 } from "lucide-react";
 import dashboardBg from "@/assets/bg.png";
+import SEO from "@/components/SEO";
 
 export default function PaymentSuccess() {
   const [searchParams] = useSearchParams();
@@ -33,8 +34,10 @@ export default function PaymentSuccess() {
   }, [planParam]);
 
   return (
-    <div
-      className="relative flex min-h-screen items-center justify-center bg-fixed bg-cover bg-center bg-no-repeat px-4 py-12"
+    <>
+      <SEO title="Payment Successful | TrueRepp" noindex />
+      <div
+        className="relative flex min-h-screen items-center justify-center bg-fixed bg-cover bg-center bg-no-repeat px-4 py-12"
       style={{
         backgroundImage: `linear-gradient(rgba(248, 250, 252, 0.55), rgba(248, 250, 252, 0.72)), url(${dashboardBg})`,
       }}
@@ -142,5 +145,6 @@ export default function PaymentSuccess() {
         </div>
       </div>
     </div>
+    </>
   );
 }

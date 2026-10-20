@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import dashboardBg from "@/assets/bg.png";
 import { getDodoCheckoutUrl } from "@/config/dodoPayments";
+import SEO from "@/components/SEO";
 
 export default function PaymentFailed() {
   const [searchParams] = useSearchParams();
@@ -17,8 +18,10 @@ export default function PaymentFailed() {
   const retryCheckoutUrl = getDodoCheckoutUrl(planParam);
 
   return (
-    <div
-      className="relative flex min-h-screen items-center justify-center bg-fixed bg-cover bg-center bg-no-repeat px-4 py-12"
+    <>
+      <SEO title="Payment Incomplete | TrueRepp" noindex />
+      <div
+        className="relative flex min-h-screen items-center justify-center bg-fixed bg-cover bg-center bg-no-repeat px-4 py-12"
       style={{
         backgroundImage: `linear-gradient(rgba(248, 250, 252, 0.55), rgba(248, 250, 252, 0.72)), url(${dashboardBg})`,
       }}
@@ -99,5 +102,6 @@ export default function PaymentFailed() {
         </div>
       </div>
     </div>
+    </>
   );
 }

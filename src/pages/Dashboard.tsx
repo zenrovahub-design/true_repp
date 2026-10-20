@@ -1,4 +1,4 @@
-import { ClipboardEvent, useEffect, useMemo, useRef, useState } from "react";
+import React, { ClipboardEvent, useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
@@ -77,6 +77,7 @@ import {
 } from "recharts";
 import dashboardBg from "@/assets/bg.png";
 import { GoogleLogo } from "@/components/GoogleLogo";
+import SEO from "@/components/SEO";
 
 type Business = {
   id: string;
@@ -813,8 +814,10 @@ export default function Dashboard() {
   }
 
   return (
-    <div
-      className="flex h-screen w-full overflow-hidden bg-fixed bg-cover bg-center bg-no-repeat text-slate-950"
+    <>
+      <SEO title="Dashboard | TrueRepp" noindex />
+      <div
+        className="flex h-screen w-full overflow-hidden bg-fixed bg-cover bg-center bg-no-repeat text-slate-950"
       style={{
         backgroundImage: `linear-gradient(rgba(248, 250, 252, 0.42), rgba(248, 250, 252, 0.56)), url(${dashboardBg})`,
       }}
@@ -2462,6 +2465,7 @@ export default function Dashboard() {
         </DialogContent>
       </Dialog>
     </div>
+    </>
   );
 }
 

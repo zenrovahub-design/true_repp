@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 import type { Tables } from "@/integrations/supabase/types";
 import dashboardBg from "@/assets/bg.png";
+import SEO from "@/components/SEO";
 
 type Profile = Tables<"profiles">;
 type Business = Tables<"businesses">;
@@ -269,8 +270,10 @@ export default function Admin() {
   }
 
   return (
-    <div
-      className="min-h-screen overflow-x-clip bg-fixed bg-cover bg-center bg-no-repeat text-slate-950"
+    <>
+      <SEO title="Admin Portal | TrueRepp" noindex />
+      <div
+        className="min-h-screen overflow-x-clip bg-fixed bg-cover bg-center bg-no-repeat text-slate-950"
       style={{
         backgroundImage: `linear-gradient(rgba(248, 250, 252, 0.42), rgba(248, 250, 252, 0.56)), url(${dashboardBg})`,
       }}
@@ -551,5 +554,6 @@ export default function Admin() {
         </div>
       </main>
     </div>
+    </>
   );
 }

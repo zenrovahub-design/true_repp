@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import dashboardBg from "@/assets/bg.png";
+import SEO from "@/components/SEO";
 
 type PageKey =
   | "features"
@@ -21,6 +22,66 @@ type PageContent = {
   title: string;
   subtitle: string;
   points: string[];
+};
+
+const pageMetadataMap: Record<
+  PageKey,
+  { title: string; description: string; canonical: string }
+> = {
+  features: {
+    title: "TrueRepp Features – Smart QR Routing & Reputation Shield",
+    description:
+      "Explore TrueRepp's smart review routing, private feedback interception, live owner dashboard, and multi-location Google profile analytics.",
+    canonical: "https://truerepp.vercel.app/features",
+  },
+  pricing: {
+    title: "TrueRepp Pricing – Simple Plans for Google Review Growth",
+    description:
+      "Transparent pricing for growing businesses. Smart QR review routing, private complaint recovery, and Google Online Profile boost starting at $25/mo.",
+    canonical: "https://truerepp.vercel.app/pricing",
+  },
+  "success-stories": {
+    title: "Who Needs TrueRepp – Solutions for Every Industry",
+    description:
+      "See how food & dining, healthcare clinics, beauty salons, trades, auto repair, and retail stores use TrueRepp to dominate Google search.",
+    canonical: "https://truerepp.vercel.app/success-stories",
+  },
+  about: {
+    title: "About TrueRepp – Empowering Businesses Through Customer Trust",
+    description:
+      "Learn how TrueRepp helps restaurants, clinics, salons, and service providers turn everyday customer feedback into powerful Google Online Profile growth.",
+    canonical: "https://truerepp.vercel.app/about",
+  },
+  blog: {
+    title: "TrueRepp Blog – Online Reputation & Review Growth Guides",
+    description:
+      "Actionable playbooks on customer feedback collection, online reputation management, and boosting your Google review rating.",
+    canonical: "https://truerepp.vercel.app/blog",
+  },
+  contact: {
+    title: "Contact TrueRepp – Dedicated Support for Business Operators",
+    description:
+      "Get in touch with the TrueRepp team. Dedicated support for QR placement, account setup, and Google profile reputation management.",
+    canonical: "https://truerepp.vercel.app/contact",
+  },
+  privacy: {
+    title: "Privacy Policy | TrueRepp",
+    description:
+      "Read the TrueRepp privacy policy regarding customer feedback security and data protection.",
+    canonical: "https://truerepp.vercel.app/privacy",
+  },
+  terms: {
+    title: "Terms of Service | TrueRepp",
+    description:
+      "Terms and conditions for using TrueRepp's review routing and feedback management services.",
+    canonical: "https://truerepp.vercel.app/terms",
+  },
+  security: {
+    title: "Security & Protection | TrueRepp",
+    description:
+      "Learn about the security practices and data protection standards implemented across TrueRepp.",
+    canonical: "https://truerepp.vercel.app/security",
+  },
 };
 
 const pageContentMap: Record<PageKey, PageContent> = {
@@ -49,13 +110,14 @@ const pageContentMap: Record<PageKey, PageContent> = {
   "success-stories": {
     title: "Who Needs True Repp Most?",
     subtitle:
-      "Built for local businesses where customer trust, Google Maps ranking, and ratings make or break revenue.",
+      "Built for businesses across all categories where customer trust, Google Online Profile ranking, and ratings drive revenue.",
     points: [
-      "Restaurants & Cafes: 94% of diners check Google Maps before choosing where to eat. Catch service issues privately at tables before they hit Yelp.",
+      "Restaurants & Cafes: 94% of diners check your Google Online Profile before choosing where to eat. Catch service issues privately at tables before they hit Yelp.",
       "Salons, Spas & Beauty Studios: Clients trust personal appearance only to top-rated stylists. Capture positive reviews right at the styling chair.",
       "Dental & Healthcare Clinics: Patients research medical providers thoroughly. Resolve billing or wait-time confusion privately with leadership.",
       "Auto Repair & Mechanics: Win customer trust for high-ticket repairs by letting ecstatic drivers leave immediate 5-star Google reviews.",
       "Home Contractors (HVAC, Plumbing, Electrical): Homeowners check 4.5+ star ratings before letting technicians into their private homes.",
+      "Retail, Boutiques & Services: Stand out from competitors with an authoritative, 5-star Google Online Profile that attracts new buyers daily.",
     ],
   },
   about: {
@@ -128,10 +190,21 @@ const pageContentMap: Record<PageKey, PageContent> = {
 
 export default function InfoPage({ pageKey }: InfoPageProps) {
   const content = pageContentMap[pageKey];
+  const meta = pageMetadataMap[pageKey] || {
+    title: `${content.title} | TrueRepp`,
+    description: content.subtitle,
+    canonical: `https://truerepp.vercel.app/${pageKey}`,
+  };
 
   return (
-    <div
-      className="min-h-screen bg-fixed bg-cover bg-center bg-no-repeat px-4 py-14 sm:px-6 lg:px-8"
+    <>
+      <SEO
+        title={meta.title}
+        description={meta.description}
+        canonical={meta.canonical}
+      />
+      <div
+        className="min-h-screen bg-fixed bg-cover bg-center bg-no-repeat px-4 py-14 sm:px-6 lg:px-8"
       style={{
         backgroundImage: `linear-gradient(rgba(248, 250, 252, 0.42), rgba(248, 250, 252, 0.56)), url(${dashboardBg})`,
       }}
@@ -164,5 +237,6 @@ export default function InfoPage({ pageKey }: InfoPageProps) {
         </div>
       </div>
     </div>
+    </>
   );
 }

@@ -38,6 +38,7 @@ import {
 } from "lucide-react";
 import dashboardBg from "@/assets/bg.png";
 import { getDodoCheckoutUrl } from "@/config/dodoPayments";
+import SEO from "@/components/SEO";
 
 const features = [
   {
@@ -53,12 +54,12 @@ const features = [
   {
     icon: Smartphone,
     title: "Instant QR & NFC Tap",
-    desc: "Customers simply scan with their phone camera on table stands, mirrors, or receipts. Zero app downloads needed.",
+    desc: "Customers simply scan with their phone camera on table stands, counters, mirrors, invoices, or receipts. Zero app downloads needed.",
   },
   {
     icon: TrendingUp,
-    title: "Google Maps SEO Surge",
-    desc: "A consistent stream of verified 5-star Google reviews helps your business outrank local competitors on Google Maps.",
+    title: "Google Online Profile Surge",
+    desc: "A consistent stream of verified 5-star Google reviews rapidly elevates your Google Online Profile to rank at the top of local search.",
   },
   {
     icon: BarChart3,
@@ -78,23 +79,23 @@ const industries = [
     iconColor: "text-amber-700 bg-amber-50 border-amber-200",
     name: "Food & Dining",
     sub: "Restaurants, cafes, bakeries & bars",
-    desc: "Route happy diners straight to Google reviews while catching complaints privately before they hit Yelp.",
-    spot: "Table tents & bill folders",
+    desc: "Route happy diners straight to your Google Online Profile while catching food or service complaints privately before they hit Yelp.",
+    spot: "Table tents, menus & bill folders",
   },
   {
     icon: Scissors,
     iconColor: "text-rose-700 bg-rose-50 border-rose-200",
     name: "Salons & Spas",
     sub: "Barbers, stylists, nail bars & aesthetics",
-    desc: "New clients pick stylists by star ratings. Capture glowing 5-star reviews in 10 seconds right from the chair.",
+    desc: "New clients pick stylists by star ratings. Capture glowing 5-star Google reviews in 10 seconds right from the styling chair.",
     spot: "Styling mirrors & checkout desk",
   },
   {
     icon: Stethoscope,
     iconColor: "text-teal-700 bg-teal-50 border-teal-200",
-    name: "Clinics & Wellness",
+    name: "Clinics & Healthcare",
     sub: "Dental, chiro, physio & medical practices",
-    desc: "Handle patient concerns privately while encouraging satisfied patients to rank you #1 in local search.",
+    desc: "Handle patient concerns privately while encouraging satisfied patients to boost your Google Online Profile to #1 in local search.",
     spot: "Reception & appointment cards",
   },
   {
@@ -102,7 +103,7 @@ const industries = [
     iconColor: "text-emerald-700 bg-emerald-50 border-emerald-200",
     name: "Home Services & Trades",
     sub: "Plumbers, HVAC, electricians & cleaners",
-    desc: "Homeowners never hire without reading reviews. Collect 5-star ratings right after completing the job.",
+    desc: "Homeowners never hire without checking reviews. Collect verified 5-star Google ratings on the spot right after completing the job.",
     spot: "Digital invoices & leave-behind cards",
   },
   {
@@ -116,10 +117,10 @@ const industries = [
   {
     icon: Store,
     iconColor: "text-purple-700 bg-purple-50 border-purple-200",
-    name: "Retail & Local Services",
-    sub: "Boutiques, gyms, pet care & local shops",
-    desc: "Convert everyday foot traffic into Google Maps dominance that beats out online and big-box competitors.",
-    spot: "POS counter & shopping bags",
+    name: "Retail, Boutiques & Services",
+    sub: "Boutiques, local shops, agencies & fitness",
+    desc: "Convert everyday foot traffic and client visits into a dominating Google Online Profile that beats out competitors.",
+    spot: "POS counter, shopping bags & invoices",
   },
 ];
 
@@ -128,7 +129,7 @@ const testimonials = [
     name: "Sarah Johnson",
     role: "Bistro & Cafe Owner",
     icon: Briefcase,
-    text: "True Repp helped us increase our Google rating from 3.4 to 4.8. Bad table experiences now reach me privately instead of ending up on Google!",
+    text: "True Repp helped us increase our Google rating from 3.4 to 4.8. Bad table experiences now reach me privately instead of ending up on our Google profile!",
     rating: 5,
   },
   {
@@ -142,28 +143,28 @@ const testimonials = [
     name: "Dr. David Patel",
     role: "Dental Clinic Director",
     icon: Shield,
-    text: "The private feedback route is a lifesaver. We resolve patient concerns immediately while happy patients boost our local search ranking.",
+    text: "The private feedback route is a lifesaver. We resolve patient concerns immediately while happy patients rapidly boost our Google Online Profile.",
     rating: 5,
   },
   {
     name: "Marcus Vance",
     role: "HVAC & Plumbing Lead",
     icon: Wrench,
-    text: "Technicians hand out our True Repp review card after every job. We now rank #1 on Google Maps for AC repair in our city.",
+    text: "Technicians hand out our True Repp review card after every job. Our Google Online Profile shot to #1 for AC repair in our city.",
     rating: 5,
   },
   {
     name: "Carlos Mendez",
     role: "Auto Detailing & Garage Owner",
     icon: Check,
-    text: "Customers love the 10-second 1-tap review when picking up their car. Our review count tripled without awkward begging.",
+    text: "Customers love the 10-second 1-tap review when picking up their car. Our Google review count tripled without awkward begging.",
     rating: 5,
   },
   {
     name: "Ava Thompson",
     role: "Boutique Retail Owner",
     icon: Store,
-    text: "Simple setup, zero hassle for customers. Having our QR on checkout bags turned casual shoppers into raving Google fans.",
+    text: "Simple setup, zero hassle for customers. Having our QR on checkout bags turned casual shoppers into raving fans on our Google profile.",
     rating: 5,
   },
 ];
@@ -214,9 +215,9 @@ const businessOutcomes = [
   {
     icon: TrendingUp,
     stat: "+35%",
-    statLabel: "More Local Walk-Ins",
-    title: "Google Maps #1 Ranking",
-    desc: "A steady flow of fresh 5-star reviews pushes your profile to the top 3 spots where 70% of local customers click.",
+    statLabel: "More Inquiries & Clients",
+    title: "#1 Google Profile Ranking",
+    desc: "A rapid stream of fresh 5-star reviews propels your Google Online Profile to the top search spots where 70% of customers choose businesses.",
     tag: "Top Search Visibility",
   },
   {
@@ -224,7 +225,7 @@ const businessOutcomes = [
     stat: "$3,000+",
     statLabel: "Saved Per Bad Review",
     title: "Negative Review Shield",
-    desc: "Intercepts 1 to 3-star ratings privately so you resolve customer complaints before they ever touch Google.",
+    desc: "Intercepts 1 to 3-star ratings privately so you resolve customer complaints before they ever touch your Google profile.",
     tag: "Zero Public Damage",
   },
   {
@@ -249,7 +250,7 @@ const userCommitments = [
     icon: RefreshCw,
     badge: "Always Included",
     title: "Continuous Future Upgrades at Zero Cost",
-    desc: "Your subscription gets better every month. We ship faster review flows, smarter AI reply tools, and new Google Maps integrations without charging upgrade fees.",
+    desc: "Your subscription gets better every month. We ship faster review flows, smarter AI reply tools, and new Google profile integrations without charging upgrade fees.",
     highlight: "All future platform releases included automatically",
   },
   {
@@ -271,15 +272,15 @@ const userCommitments = [
 const faqs = [
   {
     q: "Is True Repp suitable for a brand new business starting with zero reviews?",
-    a: "Yes! In fact, new ventures and grand openings benefit the most. Early customer trust is everything. True Repp helps you collect your first 20–50 verified 5-star Google reviews in your opening weeks, while catching initial operational hiccups privately before anyone posts a public 1-star review.",
+    a: "Yes! In fact, new ventures and grand openings benefit the most. Early customer trust is everything. True Repp helps you collect your first 20–50 verified 5-star Google reviews in your opening weeks to rapidly build your Google Online Profile, while catching initial operational hiccups privately before anyone posts a public 1-star review.",
   },
   {
     q: "How does True Repp help established businesses with existing reviews?",
-    a: "For established businesses, True Repp acts as an essential reputation shield. A single bad review can drop your average from 4.8 to 4.4 and hurt your Google Maps ranking. True Repp intercepts disgruntled customers privately and maintains a steady daily stream of 5-star reviews to keep you ranked #1 in your city.",
+    a: "For established businesses, True Repp acts as an essential reputation shield. A single bad review can drop your average from 4.8 to 4.4 and hurt your Google Online Profile search rank. True Repp intercepts disgruntled customers privately and maintains a steady daily stream of 5-star reviews to keep your Google profile ranked #1 in your city.",
   },
   {
     q: "How does True Repp protect my business from negative reviews?",
-    a: "When a customer rates 1, 2, or 3 stars, True Repp directs them to a private feedback form with optional contact details so you can fix the issue immediately. Only 4 and 5-star happy customers are guided to leave a public Google review.",
+    a: "When a customer rates 1, 2, or 3 stars, True Repp directs them to a private feedback form with optional contact details so you can fix the issue immediately. Only 4 and 5-star happy customers are guided to leave a public review on your Google profile.",
   },
   {
     q: "Do customers need to download an app?",
@@ -287,11 +288,11 @@ const faqs = [
   },
   {
     q: "How does Google review submission work?",
-    a: "When a customer rates 4 or 5 stars, True Repp opens your Google Maps review page with 1 tap, utilizing their existing Google login for a fast, authentic submission.",
+    a: "When a customer rates 4 or 5 stars, True Repp opens your official Google review profile with 1 tap, utilizing their existing Google login for a fast, authentic submission.",
   },
   {
     q: "Where should I place my True Repp QR code?",
-    a: "Place your custom QR code on dining tables, check folders, styling mirrors, reception desks, service counters, digital invoices, or takeaway bags.",
+    a: "Place your custom QR code wherever you interact with customers: restaurant dining tables, check folders, styling mirrors, reception desks, service counters, digital invoices, or takeaway packaging.",
   },
   {
     q: "Can I manage multiple business branches?",
@@ -320,7 +321,7 @@ const featureFlowLaneStyles = [
 const systemFlowItems = [
   {
     title: "5-Star Rating",
-    detail: "Customer routed straight to Google Maps review",
+    detail: "Customer routed straight to your Google Profile review",
     status: "google",
   },
   {
@@ -329,7 +330,7 @@ const systemFlowItems = [
     status: "private",
   },
   {
-    title: "Table QR Scan",
+    title: "Smart QR Scan",
     detail: "Customer opened mobile review page in 2s",
     status: "google",
   },
@@ -339,8 +340,8 @@ const systemFlowItems = [
     status: "private",
   },
   {
-    title: "Google Maps Lift",
-    detail: "Business ranking boosted in local pack",
+    title: "Google Profile Boost",
+    detail: "Online profile rank surged to the top",
     status: "google",
   },
   {
@@ -411,8 +412,14 @@ export default function Landing() {
   }, []);
 
   return (
-    <div
-      className="min-h-screen overflow-x-hidden bg-fixed bg-cover bg-center bg-no-repeat"
+    <>
+      <SEO
+        title="TrueRepp – 5-Star Google Reviews & Online Profile Management"
+        description="Collect authentic 5-star Google reviews and resolve customer complaints privately. TrueRepp rapidly boosts your Google Online Profile and search ranking."
+        canonical="https://truerepp.vercel.app/"
+      />
+      <div
+        className="min-h-screen overflow-x-hidden bg-fixed bg-cover bg-center bg-no-repeat"
       style={{
         backgroundImage: `linear-gradient(rgba(248, 250, 252, 0.42), rgba(248, 250, 252, 0.56)), url(${dashboardBg})`,
       }}
@@ -577,7 +584,7 @@ export default function Landing() {
                 </span>
               </h1>
               <p className="text-lg text-gray-600 leading-relaxed">
-                Whether you're opening a brand new venture or scaling an existing business — True Repp uses smart QR codes to route 4 & 5-star ratings directly to Google Maps, while intercepting customer complaints privately so you can fix issues before they harm your reputation.
+                Whether you run a restaurant, clinic, salon, trade service, retail shop, or professional firm — True Repp uses smart QR codes to route 4 & 5-star ratings directly to your Google Online Profile, rapidly boosting your search ranking while intercepting customer complaints privately so you can fix issues before they harm your reputation.
               </p>
             </div>
 
@@ -596,7 +603,7 @@ export default function Landing() {
             {/* Trust Badge */}
             <div className="pt-4 border-t border-gray-200">
               <p className="text-sm font-medium text-gray-600 mb-3">
-                Built for new startups, growing ventures & multi-location businesses worldwide
+                Built for restaurants, clinics, salons, trades, retail & all service businesses worldwide
               </p>
               <div className="flex items-center gap-4">
                 <Search className="w-5 h-5 text-teal-600" />
@@ -743,7 +750,7 @@ export default function Landing() {
                         Amazing experience, highly recommend
                       </p>
                       <p className="text-xs text-gray-600">
-                        Google Maps • 5 hours ago
+                        Google Online Profile • 5 hours ago
                       </p>
                     </div>
                   </div>
@@ -798,12 +805,12 @@ export default function Landing() {
                   New Business Starters
                 </h3>
                 <p className="text-xs sm:text-[13px] text-gray-600 leading-relaxed">
-                  Zero reviews is the biggest obstacle to winning initial walk-ins. True Repp accelerates your first 20–50 verified 5-star Google reviews within weeks of your grand opening, while catching early staff and service hiccups privately.
+                  Zero reviews is the biggest obstacle to winning initial customers. True Repp accelerates your first 20–50 verified 5-star Google reviews within weeks of your grand opening, rapidly building your Google Online Profile while catching early staff and service hiccups privately.
                 </p>
               </div>
               <div className="mt-5 pt-3 border-t border-slate-100 text-[11px] font-semibold text-teal-700 flex items-center gap-1.5">
                 <CheckCircle2 className="h-3.5 w-3.5 text-emerald-500" />
-                <span>Instant Google Maps credibility</span>
+                <span>Instant Google Online Profile credibility</span>
               </div>
             </div>
 
@@ -825,12 +832,12 @@ export default function Landing() {
                   Growing Local Ventures
                 </h3>
                 <p className="text-xs sm:text-[13px] text-gray-600 leading-relaxed">
-                  Turn your existing daily foot traffic into a review engine. Consistently gain 5-star reviews to surpass local neighborhood competitors and rank in the coveted Google Maps "Top 3 Local Pack" where 70% of walk-ins originate.
+                  Turn your daily customers, diners, and clients into a review engine. Consistently gain 5-star reviews to rapidly boost your Google Online Profile and outrank local competitors in top Google search results.
                 </p>
               </div>
               <div className="mt-5 pt-3 border-t border-slate-100 text-[11px] font-semibold text-emerald-700 flex items-center gap-1.5">
                 <CheckCircle2 className="h-3.5 w-3.5 text-emerald-500" />
-                <span>Outrank competitors in local search</span>
+                <span>Rapid Google Profile search boost</span>
               </div>
             </div>
 
@@ -1083,7 +1090,7 @@ export default function Landing() {
                   num: "1",
                   icon: Link2,
                   title: "Place Your QR Code",
-                  desc: "Print your custom QR code on table stands, styling mirrors, or bills.",
+                  desc: "Place your custom QR code on dining tables, counters, mirrors, invoices, or packaging.",
                 },
                 {
                   num: "2",
@@ -1101,7 +1108,7 @@ export default function Landing() {
                   num: "4",
                   icon: TrendingUp,
                   title: "Watch Your Rating Climb",
-                  desc: "Gain authentic 5-star Google reviews while solving customer issues privately.",
+                  desc: "Rapidly boost your Google Online Profile with verified 5-star reviews while solving complaints privately.",
                 },
               ].map((step, i) => (
                 <div
@@ -1460,7 +1467,7 @@ export default function Landing() {
                     </div>
 
                     <p className="text-xs text-gray-600 mb-5 leading-relaxed">
-                      Zero barriers between your guest leaving a rating and reaching the right destination.
+                      Zero barriers between your customer, diner, or client leaving a rating and reaching the right destination.
                     </p>
 
                     <div className="space-y-3">
@@ -1480,7 +1487,7 @@ export default function Landing() {
                         <div className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-emerald-700">
                           <Check className="h-2.5 w-2.5" />
                         </div>
-                        <span><strong>Direct Google Maps Tap:</strong> 4–5 star ratings open your Google listing with their account logged in.</span>
+                        <span><strong>Direct Google Profile Tap:</strong> 4–5 star ratings open your official Google profile with their account logged in.</span>
                       </div>
                     </div>
                   </div>
@@ -1528,7 +1535,7 @@ export default function Landing() {
                         <div className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-teal-100 text-teal-700">
                           <Check className="h-2.5 w-2.5" />
                         </div>
-                        <span><strong>Free Lifetime Upgrades:</strong> AI reply features, new Google integrations & speed upgrades included free.</span>
+                        <span><strong>Free Lifetime Upgrades:</strong> AI reply features, new Google profile integrations & speed upgrades included free.</span>
                       </div>
                       <div className="flex items-start gap-2.5 text-xs text-gray-700">
                         <div className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-teal-100 text-teal-700">
@@ -1733,6 +1740,7 @@ export default function Landing() {
         </div>
       </footer>
     </div>
+    </>
   );
 }
 

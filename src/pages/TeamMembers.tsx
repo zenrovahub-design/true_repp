@@ -15,6 +15,7 @@ import { Label } from "@/components/ui/label";
 import { ArrowLeft, Pencil, Plus, Trash2, Users } from "lucide-react";
 import { toast } from "sonner";
 import dashboardBg from "@/assets/bg.png";
+import SEO from "@/components/SEO";
 
 type Business = {
   id: string;
@@ -263,8 +264,10 @@ export default function TeamMembers() {
   }
 
   return (
-    <div
-      className="min-h-screen overflow-x-clip bg-fixed bg-cover bg-center bg-no-repeat text-slate-950"
+    <>
+      <SEO title="Team Members | TrueRepp" noindex />
+      <div
+        className="min-h-screen overflow-x-clip bg-fixed bg-cover bg-center bg-no-repeat text-slate-950"
       style={{
         backgroundImage: `linear-gradient(rgba(248, 250, 252, 0.42), rgba(248, 250, 252, 0.56)), url(${dashboardBg})`,
       }}
@@ -470,5 +473,6 @@ export default function TeamMembers() {
         </div>
       </main>
     </div>
+    </>
   );
 }

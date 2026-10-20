@@ -15,6 +15,7 @@ import {
 import { toast } from "sonner";
 import { ArrowLeft, Eye, EyeOff, ShieldCheck } from "lucide-react";
 import dashboardBg from "@/assets/bg.png";
+import SEO from "@/components/SEO";
 
 export default function AdminLogin() {
   const navigate = useNavigate();
@@ -85,8 +86,10 @@ export default function AdminLogin() {
   };
 
   return (
-    <div
-      className="relative flex min-h-screen items-center justify-center bg-fixed bg-cover bg-center bg-no-repeat px-4 py-16"
+    <>
+      <SEO title="Admin Login | TrueRepp" noindex />
+      <div
+        className="relative flex min-h-screen items-center justify-center bg-fixed bg-cover bg-center bg-no-repeat px-4 py-16"
       style={{
         backgroundImage: `linear-gradient(rgba(248, 250, 252, 0.45), rgba(248, 250, 252, 0.62)), url(${dashboardBg})`,
       }}
@@ -163,5 +166,6 @@ export default function AdminLogin() {
         </CardContent>
       </Card>
     </div>
+    </>
   );
 }
