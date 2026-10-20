@@ -414,9 +414,9 @@ export default function Landing() {
   return (
     <>
       <SEO
-        title="TrueRepp – 5-Star Google Reviews & Online Profile Management"
+        title="TrueRepp – 5-Star Google Reviews & Profile Boost"
         description="Collect authentic 5-star Google reviews and resolve customer complaints privately. TrueRepp rapidly boosts your Google Online Profile and search ranking."
-        canonical="https://truerepp.vercel.app/"
+        canonical="https://truerepp.com/"
       />
       <div
         className="min-h-screen overflow-x-hidden bg-fixed bg-cover bg-center bg-no-repeat"
@@ -1737,7 +1737,7 @@ export default function Landing() {
               <div className="flex items-center gap-3 text-xs font-semibold text-slate-600 flex-wrap">
                 <span>Share TrueRepp:</span>
                 <a
-                  href="https://twitter.com/intent/tweet?text=Rapidly%20boost%20your%20Google%20Online%20Profile%20with%20TrueRepp&url=https://truerepp.vercel.app/"
+                  href="https://twitter.com/intent/tweet?text=Rapidly%20boost%20your%20Google%20Online%20Profile%20with%20TrueRepp&url=https://truerepp.com/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-teal-600 transition-colors"
@@ -1747,7 +1747,7 @@ export default function Landing() {
                 </a>
                 <span>•</span>
                 <a
-                  href="https://www.linkedin.com/sharing/share-offsite/?url=https://truerepp.vercel.app/"
+                  href="https://www.linkedin.com/sharing/share-offsite/?url=https://truerepp.com/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-teal-600 transition-colors"
@@ -1757,7 +1757,7 @@ export default function Landing() {
                 </a>
                 <span>•</span>
                 <a
-                  href="https://www.facebook.com/sharer/sharer.php?u=https://truerepp.vercel.app/"
+                  href="https://www.facebook.com/sharer/sharer.php?u=https://truerepp.com/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-teal-600 transition-colors"
@@ -1767,7 +1767,7 @@ export default function Landing() {
                 </a>
                 <span>•</span>
                 <a
-                  href="https://api.whatsapp.com/send?text=Check%20out%20TrueRepp%20to%20boost%20Google%20reviews:%20https://truerepp.vercel.app/"
+                  href="https://api.whatsapp.com/send?text=Check%20out%20TrueRepp%20to%20boost%20Google%20reviews:%20https://truerepp.com/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-teal-600 transition-colors"

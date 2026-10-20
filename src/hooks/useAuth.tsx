@@ -21,7 +21,7 @@ interface AuthContextType {
   signIn: (
     email: string,
     password: string,
-  ) => Promise<{ error: any }>;
+  ) => Promise<{ data?: any; error: any }>;
   signOut: () => Promise<void>;
 }
 
@@ -183,7 +183,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       storeSessionStartedAt(Date.now());
     }
 
-    return { error };
+    return { data, error };
   };
 
   const signOut = async () => {

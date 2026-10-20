@@ -35,7 +35,7 @@ export const getDodoCheckoutUrl = (
     const origin =
       typeof window !== "undefined" && window.location.origin
         ? window.location.origin
-        : "https://truerepp.vercel.app";
+        : "https://truerepp.com";
 
     const returnUrl = `${origin}/payment/success?plan=${normalizedPlan}`;
     url.searchParams.set("redirect_url", returnUrl);

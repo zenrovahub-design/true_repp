@@ -9,13 +9,13 @@ import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 import {
   BarChart3,
+  ChevronLeft,
+  ChevronRight,
   LayoutDashboard,
   Lock,
   LogOut,
-  MessageSquare,
   Settings,
   Shield,
-  Star,
   Users,
 } from "lucide-react";
 import type { Tables } from "@/integrations/supabase/types";
@@ -48,6 +48,8 @@ export default function Admin() {
   const [activeTab, setActiveTab] = useState<
     "overview" | "clients" | "settings"
   >("overview");
+  const [currentPage, setCurrentPage] = useState(1);
+  const USERS_PER_PAGE = 5;
 
   useEffect(() => {
     if (!authLoading && !user) {
@@ -139,6 +141,13 @@ export default function Admin() {
   }, [businessByUserId, feedbackCountByBusinessId, profiles]);
 
   const totalClients = clients.length;
+  const totalPages = Math.max(1, Math.ceil(totalClients / USERS_PER_PAGE));
+
+  const paginatedClients = useMemo(() => {
+    const start = (currentPage - 1) * USERS_PER_PAGE;
+    return clients.slice(start, start + USERS_PER_PAGE);
+  }, [clients, currentPage]);
+
   const activeClients = clients.filter(
     (client) => client.business?.subscription_active,
   ).length;
@@ -332,18 +341,30 @@ export default function Admin() {
               </nav>
             </div>
 
-            <Button
-              variant="outline"
-              size="sm"
-              className="border-slate-300 bg-white/85"
-              onClick={async () => {
-                await signOut();
-                navigate("/admin/login");
-              }}
-            >
-              <LogOut className="mr-2 h-4 w-4" />
-              Sign Out
-            </Button>
+            <div className="flex items-center gap-2">
+              <Button
+                variant="outline"
+                size="sm"
+                className="border-slate-300 bg-white/85 text-slate-800 hover:bg-white"
+                onClick={() => navigate("/dashboard")}
+              >
+                <LayoutDashboard className="mr-2 h-4 w-4 text-teal-600" />
+                Client View
+              </Button>
+
+              <Button
+                variant="outline"
+                size="sm"
+                className="border-slate-300 bg-white/85"
+                onClick={async () => {
+                  await signOut();
+                  navigate("/admin/login");
+                }}
+              >
+                <LogOut className="mr-2 h-4 w-4" />
+                Sign Out
+              </Button>
+            </div>
           </div>
         </div>
       </header>
@@ -413,8 +434,15 @@ export default function Admin() {
 
           {(activeTab === "overview" || activeTab === "clients") && (
             <Card className="glass-card glass-card-hover border-2 border-slate-300/80">
-              <CardHeader>
-                <CardTitle>Client Accounts</CardTitle>
+              <CardHeader className="flex flex-row items-center justify-between pb-4">
+                <CardTitle className="flex items-center gap-2">
+                  <Users className="h-5 w-5 text-primary" /> Client Accounts ({totalClients})
+                </CardTitle>
+                {totalPages > 1 && (
+                  <span className="text-xs font-semibold text-slate-500">
+                    Page {currentPage} of {totalPages}
+                  </span>
+                )}
               </CardHeader>
               <CardContent>
                 <div className="space-y-3">
@@ -424,7 +452,7 @@ export default function Admin() {
                     </p>
                   )}
 
-                  {clients.map((client) => {
+                  {paginatedClients.map((client) => {
                     const business = client.business;
                     const enabled = Boolean(business?.subscription_active);
 
@@ -470,42 +498,62 @@ export default function Admin() {
                     );
                   })}
                 </div>
-              </CardContent>
-            </Card>
-          )}
 
-          {(activeTab === "overview" || activeTab === "clients") && (
-            <Card className="glass-card glass-card-hover border-2 border-slate-300/80">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <MessageSquare className="h-5 w-5 text-primary" /> Recent
-                  Feedback ({feedbacks.length})
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-3">
-                  {feedbacks.map((fb) => (
-                    <div
-                      key={fb.id}
-                      className="rounded-lg border border-slate-300/80 bg-white/75 p-3 shadow-sm backdrop-blur-sm space-y-1"
-                    >
-                      <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-                        <div className="flex items-center gap-1">
-                          {[1, 2, 3, 4, 5].map((s) => (
-                            <Star
-                              key={s}
-                              className={`h-4 w-4 ${s <= fb.rating ? "text-warning fill-warning" : "text-muted"}`}
-                            />
-                          ))}
-                        </div>
-                        <span className="text-xs text-muted-foreground">
-                          {new Date(fb.created_at).toLocaleDateString()}
-                        </span>
+                {totalPages > 1 && (
+                  <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-5 mt-5 border-t border-slate-200/80 text-sm text-slate-600">
+                    <p className="text-xs sm:text-sm text-slate-600">
+                      Showing{" "}
+                      <span className="font-semibold text-slate-900">
+                        {(currentPage - 1) * USERS_PER_PAGE + 1}
+                      </span>
+                      –
+                      <span className="font-semibold text-slate-900">
+                        {Math.min(currentPage * USERS_PER_PAGE, totalClients)}
+                      </span>{" "}
+                      of{" "}
+                      <span className="font-semibold text-slate-900">{totalClients}</span>{" "}
+                      users
+                    </p>
+
+                    <div className="flex items-center gap-1.5">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+                        disabled={currentPage === 1}
+                        className="h-8 px-2.5 bg-white/80 border-slate-300 hover:bg-slate-100"
+                      >
+                        <ChevronLeft className="h-4 w-4 mr-1" /> Prev
+                      </Button>
+
+                      <div className="flex items-center gap-1 px-1">
+                        {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                          <button
+                            key={page}
+                            onClick={() => setCurrentPage(page)}
+                            className={`h-8 w-8 rounded-md text-xs font-semibold transition ${
+                              currentPage === page
+                                ? "bg-teal-600 text-white shadow-xs"
+                                : "bg-white/80 text-slate-700 hover:bg-slate-100 border border-slate-200"
+                            }`}
+                          >
+                            {page}
+                          </button>
+                        ))}
                       </div>
-                      {fb.message && <p className="text-sm">{fb.message}</p>}
+
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
+                        disabled={currentPage === totalPages}
+                        className="h-8 px-2.5 bg-white/80 border-slate-300 hover:bg-slate-100"
+                      >
+                        Next <ChevronRight className="h-4 w-4 ml-1" />
+                      </Button>
                     </div>
-                  ))}
-                </div>
+                  </div>
+                )}
               </CardContent>
             </Card>
           )}

@@ -60,6 +60,7 @@ import {
   Plus,
   Quote,
   Settings,
+  Shield,
   Star,
   Trash2,
   User,
@@ -191,7 +192,29 @@ export default function Dashboard() {
   const [pendingDeleteIds, setPendingDeleteIds] = useState<string[]>([]);
   const [feedbackDeleteDialogOpen, setFeedbackDeleteDialogOpen] =
     useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
   const profileMenuRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (!user) {
+      setIsAdmin(false);
+      return;
+    }
+
+    const checkAdmin = async () => {
+      const { data: profile } = await supabase
+        .from("profiles")
+        .select("is_admin")
+        .eq("id", user.id)
+        .maybeSingle();
+
+      if (profile?.is_admin) {
+        setIsAdmin(true);
+      }
+    };
+
+    void checkAdmin();
+  }, [user]);
 
   useEffect(() => {
     if (!authLoading && !user) navigate("/auth");
@@ -1038,6 +1061,19 @@ export default function Dashboard() {
           </div>
 
           <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
+            {isAdmin && (
+              <Button
+                size="sm"
+                variant="outline"
+                onClick={() => navigate("/admin")}
+                className="h-9 rounded-xl border-amber-300 bg-amber-50 text-amber-900 hover:bg-amber-100 hover:text-amber-950 px-2.5 sm:px-3 text-xs font-bold shadow-2xs transition-all flex items-center gap-1.5"
+                title="Go to Master Admin Portal"
+              >
+                <Shield className="h-3.5 w-3.5 text-amber-600" />
+                <span>Admin Portal</span>
+              </Button>
+            )}
+
             {/* Clean, dedicated Copy Link Button */}
             {reviewUrl && (
               <Button
@@ -1101,6 +1137,16 @@ export default function Dashboard() {
                       {selectedPlan} Plan
                     </span>
                   </div>
+                  {isAdmin && (
+                    <Button
+                      variant="outline"
+                      className="w-full mb-2 rounded-xl border-amber-300 bg-amber-50 text-amber-900 hover:bg-amber-100 text-xs font-semibold justify-start"
+                      onClick={() => navigate("/admin")}
+                    >
+                      <Shield className="mr-2 h-4 w-4 text-amber-600" />
+                      Admin Portal
+                    </Button>
+                  )}
                   <Button
                     variant="outline"
                     className="w-full rounded-xl border-slate-300 bg-white px-3 text-slate-900 hover:bg-rose-50 hover:text-rose-600 hover:border-rose-200 transition"

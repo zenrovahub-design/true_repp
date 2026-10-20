@@ -32,55 +32,55 @@ const pageMetadataMap: Record<
     title: "TrueRepp Features – Smart QR Routing & Reputation Shield",
     description:
       "Explore TrueRepp's smart review routing, private feedback interception, live owner dashboard, and multi-location Google profile analytics.",
-    canonical: "https://truerepp.vercel.app/features",
+    canonical: "https://truerepp.com/features",
   },
   pricing: {
     title: "TrueRepp Pricing – Simple Plans for Google Review Growth",
     description:
       "Transparent pricing for growing businesses. Smart QR review routing, private complaint recovery, and Google Online Profile boost starting at $25/mo.",
-    canonical: "https://truerepp.vercel.app/pricing",
+    canonical: "https://truerepp.com/pricing",
   },
   "success-stories": {
     title: "Who Needs TrueRepp – Solutions for Every Industry",
     description:
       "See how food & dining, healthcare clinics, beauty salons, trades, auto repair, and retail stores use TrueRepp to dominate Google search.",
-    canonical: "https://truerepp.vercel.app/success-stories",
+    canonical: "https://truerepp.com/success-stories",
   },
   about: {
     title: "About TrueRepp – Empowering Businesses Through Customer Trust",
     description:
       "Learn how TrueRepp helps restaurants, clinics, salons, and service providers turn everyday customer feedback into powerful Google Online Profile growth.",
-    canonical: "https://truerepp.vercel.app/about",
+    canonical: "https://truerepp.com/about",
   },
   blog: {
     title: "TrueRepp Blog – Online Reputation & Review Growth Guides",
     description:
       "Actionable playbooks on customer feedback collection, online reputation management, and boosting your Google review rating.",
-    canonical: "https://truerepp.vercel.app/blog",
+    canonical: "https://truerepp.com/blog",
   },
   contact: {
     title: "Contact TrueRepp – Dedicated Support for Business Operators",
     description:
       "Get in touch with the TrueRepp team. Dedicated support for QR placement, account setup, and Google profile reputation management.",
-    canonical: "https://truerepp.vercel.app/contact",
+    canonical: "https://truerepp.com/contact",
   },
   privacy: {
     title: "Privacy Policy | TrueRepp",
     description:
       "Read the TrueRepp privacy policy regarding customer feedback security and data protection.",
-    canonical: "https://truerepp.vercel.app/privacy",
+    canonical: "https://truerepp.com/privacy",
   },
   terms: {
     title: "Terms of Service | TrueRepp",
     description:
       "Terms and conditions for using TrueRepp's review routing and feedback management services.",
-    canonical: "https://truerepp.vercel.app/terms",
+    canonical: "https://truerepp.com/terms",
   },
   security: {
     title: "Security & Protection | TrueRepp",
     description:
       "Learn about the security practices and data protection standards implemented across TrueRepp.",
-    canonical: "https://truerepp.vercel.app/security",
+    canonical: "https://truerepp.com/security",
   },
 };
 
@@ -193,7 +193,7 @@ export default function InfoPage({ pageKey }: InfoPageProps) {
   const meta = pageMetadataMap[pageKey] || {
     title: `${content.title} | TrueRepp`,
     description: content.subtitle,
-    canonical: `https://truerepp.vercel.app/${pageKey}`,
+    canonical: `https://truerepp.com/${pageKey}`,
   };
 
   return (

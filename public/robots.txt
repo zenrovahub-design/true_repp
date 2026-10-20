@@ -8,6 +8,7 @@ Allow: /blog
 Allow: /contact
 Allow: /privacy
 Allow: /terms
+Allow: /security
 Allow: /assets/
 Allow: /favicon.svg
 Allow: /og-image.jpg
@@ -21,4 +22,4 @@ Disallow: /review/
 Disallow: /auth
 Disallow: /payment/
 
-Sitemap: https://truerepp.vercel.app/sitemap.xml
+Sitemap: https://truerepp.com/sitemap.xml

@@ -1,6 +1,7 @@
 import { FormEvent, useEffect, useMemo, useState } from "react";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
+import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -72,8 +73,28 @@ export default function Auth() {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
-  const { signIn, signUp } = useAuth();
+  const { user, loading: authLoading, signIn, signUp } = useAuth();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (authLoading || !user) return;
+
+    const checkExistingSession = async () => {
+      const { data: profile } = await supabase
+        .from("profiles")
+        .select("is_admin")
+        .eq("id", user.id)
+        .maybeSingle();
+
+      if (profile?.is_admin) {
+        navigate("/admin", { replace: true });
+      } else {
+        navigate("/dashboard", { replace: true });
+      }
+    };
+
+    void checkExistingSession();
+  }, [authLoading, navigate, user]);
 
   useEffect(() => {
     if (authMode === "signup") {
@@ -112,10 +133,28 @@ export default function Auth() {
 
     try {
       if (isLogin) {
-        const { error } = await signIn(email, password);
+        const trimmedEmail = email.trim();
+        const { data, error } = await signIn(trimmedEmail, password);
         if (error) {
           toast.error(error.message);
         } else {
+          // Check if the authenticated account is an administrator
+          const loggedInUserId = data?.user?.id || (await supabase.auth.getUser()).data?.user?.id;
+          if (loggedInUserId) {
+            const { data: profile } = await supabase
+              .from("profiles")
+              .select("is_admin")
+              .eq("id", loggedInUserId)
+              .maybeSingle();
+
+            if (profile?.is_admin) {
+              toast.success("Welcome to TrueRepp Admin Portal");
+              navigate("/admin");
+              return;
+            }
+          }
+
+          toast.success("Signed in successfully!");
           navigate("/dashboard");
         }
       } else {
@@ -124,7 +163,7 @@ export default function Auth() {
         };
 
         const { error } = await signUp(
-          email,
+          email.trim(),
           password,
           signupData,
         );
@@ -133,7 +172,7 @@ export default function Auth() {
           toast.error(error.message);
         } else {
           toast.success("Account created! Redirecting to secure Dodo checkout...");
-          const checkoutUrl = getDodoCheckoutUrl(selectedPlan, email);
+          const checkoutUrl = getDodoCheckoutUrl(selectedPlan, email.trim());
           setTimeout(() => {
             window.location.href = checkoutUrl;
           }, 800);
