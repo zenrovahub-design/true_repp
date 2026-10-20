@@ -578,7 +578,7 @@ export default function Landing() {
                 For New Ventures, Startups & Established Brands
               </div>
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-4">
-                Get More 5-Star Google Reviews.{" "}
+                TrueRepp: Get More 5-Star Google Reviews.{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-blue-600">
                   Filter Out Negative Ones.
                 </span>
@@ -1730,10 +1730,52 @@ export default function Landing() {
 
             <div className="my-8 border-t border-slate-300/80" />
 
-            <div className="flex flex-col gap-3 text-sm text-slate-700 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex flex-col gap-4 text-sm text-slate-700 sm:flex-row sm:items-center sm:justify-between">
               <p>
                 © {new Date().getFullYear()} True Repp. All rights reserved.
               </p>
+              <div className="flex items-center gap-3 text-xs font-semibold text-slate-600 flex-wrap">
+                <span>Share TrueRepp:</span>
+                <a
+                  href="https://twitter.com/intent/tweet?text=Rapidly%20boost%20your%20Google%20Online%20Profile%20with%20TrueRepp&url=https://truerepp.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-teal-600 transition-colors"
+                  aria-label="Share TrueRepp on Twitter / X"
+                >
+                  Twitter / X
+                </a>
+                <span>•</span>
+                <a
+                  href="https://www.linkedin.com/sharing/share-offsite/?url=https://truerepp.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-teal-600 transition-colors"
+                  aria-label="Share TrueRepp on LinkedIn"
+                >
+                  LinkedIn
+                </a>
+                <span>•</span>
+                <a
+                  href="https://www.facebook.com/sharer/sharer.php?u=https://truerepp.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-teal-600 transition-colors"
+                  aria-label="Share TrueRepp on Facebook"
+                >
+                  Facebook
+                </a>
+                <span>•</span>
+                <a
+                  href="https://api.whatsapp.com/send?text=Check%20out%20TrueRepp%20to%20boost%20Google%20reviews:%20https://truerepp.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-teal-600 transition-colors"
+                  aria-label="Share TrueRepp on WhatsApp"
+                >
+                  WhatsApp
+                </a>
+              </div>
               <p>Built for modern businesses.</p>
             </div>
           </div>
