@@ -10,7 +10,7 @@ interface SEOProps {
 }
 
 export default function SEO({
-  title = "TrueRepp – 5-Star Google Reviews & Online Profile Management",
+  title = "TrueRepp – 5-Star Google Reviews & Profile Boost",
   description = "Collect authentic 5-star Google reviews and resolve customer complaints privately. TrueRepp rapidly boosts your Google Online Profile and search ranking.",
   canonical = "https://truerepp.vercel.app/",
   noindex = false,
